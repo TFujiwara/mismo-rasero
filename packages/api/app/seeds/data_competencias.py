@@ -81,6 +81,194 @@ COMPETENCIAS: list[dict] = [
         "palabras_clave": ["irpf", "renta", "tramo autonómico", "declaracion de la renta",
                            "bajar el irpf", "subir el irpf"],
     },
+    {
+        "nombre": "Educación pública — colegios y plazas escolares",
+        "slug": "educacion-publica",
+        "descripcion_llana": "Colegios, plazas escolares y profesorado son de tu "
+        "Comunidad Autónoma. El ayuntamiento mantiene los edificios en algunos "
+        "municipios (convenio), pero no decide el profesorado ni las plazas.",
+        "descripcion_tecnica": "UE (no interviene en el servicio ordinario) -> Estado "
+        "regula el marco (LOE, Ley Orgánica 2/2006) -> Comunidad Autónoma crea y "
+        "organiza centros, plazas y profesorado (Estatut art. 57 educación) -> "
+        "Ayuntamiento: conservación de edificios si hay convenio (LBRL art. 25.2.h) "
+        "y suelo escolar.",
+        "articulo_legal": "LOE (LO 2/2006) + Estatut art. 57",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899",
+        "palabras_clave": ["colegio", "colegios", "educación", "escuela", "plazas escolares",
+                           "profesores", "instituto", "guardería pública"],
+    },
+    {
+        "nombre": "Basuras — recogida y tasa de basura",
+        "slug": "basuras",
+        "descripcion_llana": "La recogida de basuras es del ayuntamiento (o de la "
+        "mancomunidad si está agrupado), que financia el servicio con la tasa de "
+        "basuras, no con tus impuestos generales.",
+        "descripcion_tecnica": "UE (directivas de residuos: Ley 7/2022 las transpone) -> "
+        "Estado marco de residuos (Ley 7/2022) -> Ayuntamiento: servicio obligatorio "
+        "(LBRL art. 25.2.a, D) y tasa por ordenanza en BOP (RDL 2/2004 art. 20.4) -> "
+        "Mancomunidad si el municipio está agrupado.",
+        "articulo_legal": "LBRL art. 25.2.a + RDL 2/2004 art. 20.4",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["basura", "basuras", "tasa de basuras", "residuos",
+                           "contenedores", "recogida de basura", "punto limpio"],
+    },
+    {
+        "nombre": "Agua — abastecimiento y suministro",
+        "slug": "agua-abastecimiento",
+        "descripcion_llana": "El agua que sale de tu grifo la gestiona el ayuntamiento "
+        "o una mancomunidad/sociedad mixta. Los cortes, la factura municipal y la "
+        "calidad del servicio son competencia local. Los embalses no.",
+        "descripcion_tecnica": "Estado: recurso y cuenca (TRLA, RDL 1/2001, "
+        "Confederaciones Hidrográficas) -> Comunidad Autónoma: sanidad del agua de "
+        "consumo -> Ayuntamiento o Mancomunidad: abastecimiento, distribución y "
+        "saneamiento (LBRL art. 25.2.a y D; RDL 2/2004 tasa).",
+        "articulo_legal": "LBRL art. 25.2 + TRLA (RDLeg 1/2001)",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2001/07/20/1",
+        "palabras_clave": ["agua", "abastecimiento de agua", "cortes de agua",
+                           "factura del agua", "saneamiento", "fuga de agua"],
+    },
+    {
+        "nombre": "Carreteras — según la titularidad",
+        "slug": "carreteras",
+        "descripcion_llana": "Quién arregla una carretera depende de de quién es: las "
+        "calles son del ayuntamiento, las carreteras provinciales de la diputación, "
+        "las autonómicas (CV, A-) de la Comunidad y las nacionales (N-) del Estado.",
+        "descripcion_tecnica": "Ayuntamiento: vía urbana (LBRL art. 25.2) -> Diputación: "
+        "carreteras provinciales (LBRL art. 36.1.b) -> Comunidad Autónoma: red "
+        "autonómica -> Estado: red nacional (N-) y interestatal. La matrícula de la "
+        "vía (CV-, N-, A-) indica el titular.",
+        "articulo_legal": "LBRL art. 25.2 y 36.1.b",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["carretera", "carreteras", "conservera", "autovía",
+                           "comarcal", "nacional", "vía interurbana"],
+    },
+    {
+        "nombre": "Policía local",
+        "slug": "policia-local",
+        "descripcion_llana": "La policía local depende del ayuntamiento: tráfico "
+        "urbano, seguridad en el municipio y ordenanzas. No es la Policía Nacional "
+        "ni la Guardia Civil.",
+        "descripcion_tecnica": "Ayuntamiento: policía local (LBRL art. 25.2.f; LO "
+        "2/1986 regula las policías locales) -> Estado: Policía Nacional y Guardia "
+        "Civil (LO 2/1986) -> Comunidad Autónoma: policía autonómica donde existe.",
+        "articulo_legal": "LBRL art. 25.2.f + LO 2/1986",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859",
+        "palabras_clave": ["policía local", "policia municipal", "multas de tráfico",
+                           "agente de tráfico", "denuncia municipal"],
+    },
+    {
+        "nombre": "Policía Nacional y Guardia Civil",
+        "slug": "policia-nacional",
+        "descripcion_llana": "Seguridad ciudadana, DNI y delitos: Policía Nacional "
+        "(ciudades) y Guardia Civil (rural). Dependen del Estado, no del ayuntamiento.",
+        "descripcion_tecnica": "Estado: Policía Nacional y Guardia Civil (LO 2/1986, "
+        "art. 104 CE) -> Ayuntamiento NO manda efectivos estatales; coopera con la "
+        "policía local.",
+        "articulo_legal": "LO 2/1986 + art. 104 CE",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859",
+        "palabras_clave": ["policía nacional", "guardia civil", "dni", "pasaporte",
+                           "seguridad ciudadana", "comisaría"],
+    },
+    {
+        "nombre": "Licencias de obra y urbanismo",
+        "slug": "licencias-obra",
+        "descripcion_llana": "Las licencias de obra las da el ayuntamiento con su "
+        "planeamiento (PGOU). La Generalitat fiscaliza urbanismo, pero la licencia "
+        "es municipal.",
+        "descripcion_tecnica": "Ayuntamiento: licencias y planeamiento (LBRL art. "
+        "25.2.a; LOTUP Ley 5/2014 en la CV) -> Comunidad Autónoma: fiscalización "
+        "urbanística y plan territorial -> Estado: legislación básica (Ley 39/2015 "
+        "procedimientos; suelo: RDL 7/2015).",
+        "articulo_legal": "LBRL art. 25.2.a + LOTUP (Ley 5/2014)",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["licencia de obra", "obra sin licencia", "urbanismo",
+                           "pgou", "certificado urbanístico", "obra mayor", "obra menor"],
+    },
+    {
+        "nombre": "Pensiones",
+        "slug": "pensiones",
+        "descripcion_llana": "Las pensiones las paga y gestiona la Seguridad Social "
+        "del Estado. Ninguna comunidad autónoma ni ayuntamiento puede subir, bajar "
+        "o revalorizar una pensión.",
+        "descripcion_tecnica": "Estado: Seguridad Social y pensiones (LGSS, RDLeg "
+        "8/2015; art. 149.1.17 CE) -> Comunidad Autónoma NO decide cuantías -> "
+        "Ayuntamiento NO decide cuantías.",
+        "articulo_legal": "LGSS (RDLeg 8/2015) + art. 149.1.17 CE",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2015/10/30/8",
+        "palabras_clave": ["pensión", "pensiones", "jubilación", "seguridad social",
+                           "subir las pensiones", "pagar las pensiones"],
+    },
+    {
+        "nombre": "Vivienda pública y ayudas al alquiler",
+        "slug": "vivienda-publica",
+        "descripcion_llana": "Las VPO, las ayudas al alquiler y los planes de vivienda "
+        "los gestiona tu Comunidad Autónoma (con marco estatal). El ayuntamiento "
+        "puede ceder suelo, pero no crea VPO.",
+        "descripcion_tecnica": "Estado: legislación básica y planes estatales (art. "
+        "47 CE; Ley 12/2023 por el derecho a la vivienda) -> Comunidad Autónoma: VPO, "
+        "plan de vivienda y ayudas (Estatut art. 60) -> Ayuntamiento: suelo y "
+        "informes (LBRL art. 25.2).",
+        "articulo_legal": "Ley 12/2023 + Estatut art. 60",
+        "fuente_url": "https://www.boe.es/eli/es/l/2023/05/24/12",
+        "palabras_clave": ["vpo", "vivienda pública", "ayuda al alquiler", "alquiler joven",
+                           "vivienda protegida", "plan de vivienda"],
+    },
+    {
+        "nombre": "Transporte público — urbano e interurbano",
+        "slug": "transporte-publico",
+        "descripcion_llana": "El autobús urbano es del ayuntamiento. El metro, el "
+        "tranvía y el transporte interurbano son de la Generalitat; los trenes de "
+        "cercanías, del Estado.",
+        "descripcion_tecnica": "Ayuntamiento: transporte urbano (LBRL art. 25.2.c) -> "
+        "Comunidad Autónoma: transporte interurbano y metropolitano (Estatut art. "
+        "57 bis) -> Estado: cercanías y larga distancia (art. 149.1.21 CE).",
+        "articulo_legal": "LBRL art. 25.2.c + art. 149.1.21 CE",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["autobús urbano", "bus urbano", "transporte público",
+                           "metro", "cercanías", "emt", "bonobús"],
+    },
+    {
+        "nombre": "Ordenación del tráfico y radares urbanos",
+        "slug": "ordenacion-trafico",
+        "descripcion_llana": "En las calles urbanas, el ayuntamiento ordena el tráfico "
+        "y pone radares (con la ley estatal por delante). En carretera, manda la DGT.",
+        "descripcion_tecnica": "Estado: legislación de tráfico (RDL 6/2015) y DGT -> "
+        "Ayuntamiento: ordenación del tráfico en vía urbana, radares y señalética "
+        "municipal (LBRL art. 25.2.g; RDL 6/2015 art. 13.3).",
+        "articulo_legal": "RDLg 6/2015 art. 13.3 + LBRL art. 25.2.g",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2015/10/30/6",
+        "palabras_clave": ["radares", "radar municipal", "ordenación del tráfico",
+                           "multas de tráfico", "zona 30", "aparcamiento"],
+    },
+    {
+        "nombre": "Empadronamiento",
+        "slug": "empadronamiento",
+        "descripcion_llana": "Empadronarse es un derecho y un trámite municipal: el "
+        "ayuntamiento inscribe y certifica el padrón. Es la puerta para sanidad, "
+        "escuela y ayudas.",
+        "descripcion_tecnica": "Ayuntamiento: gestión del padrón (LBRL art. 16; RDL "
+        "169/1986) -> Estado: coordinación del padrón (INE) -> Nadie más puede "
+        "empadronarte.",
+        "articulo_legal": "LBRL art. 16 + RDL 169/1986",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["empadronamiento", "empadronarse", "padrón municipal",
+                           "volante de empadronamiento", "certificado de empadronamiento"],
+    },
+    {
+        "nombre": "Catastro inmobiliario",
+        "slug": "catastro",
+        "descripcion_llana": "El Catastro es del Estado (AEAT Catastro). El "
+        "ayuntamiento colabora y recauda el IBI con esos datos, pero no puede "
+        "modificar la referencia catastral ni los valores.",
+        "descripcion_tecnica": "Estado: Catastro Inmobiliario (RDL 1/2004; AEAT "
+        "Catastro) -> Ayuntamiento: colaboración y recaudación del IBI (LBRL art. "
+        "25.2.f) -> Comunidad Autónoma NO gestiona el catastro (salvo Álava, "
+        "Gipuzkoa: foral).",
+        "articulo_legal": "RDLeg 1/2004 (TR Catastro) + LBRL art. 25.2.f",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2004/03/05/1",
+        "palabras_clave": ["catastro", "referencia catastral", "valor catastral",
+                           "certificado catastral", "catastral"],
+    },
 ]
 
 

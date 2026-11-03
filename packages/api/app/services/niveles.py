@@ -26,6 +26,19 @@ NIVELES_COMPETENTES: dict[str, list[str]] = {
     "via-publica": [LOCAL, PROVINCIA],
     "ibi": [LOCAL],
     "irpf": [ESTADO, CCAA],
+    "educacion-publica": [CCAA],
+    "basuras": [LOCAL],
+    "agua-abastecimiento": [LOCAL],
+    "carreteras": [LOCAL, PROVINCIA, CCAA, ESTADO],  # según titularidad de la vía
+    "policia-local": [LOCAL],
+    "policia-nacional": [ESTADO],
+    "licencias-obra": [LOCAL],
+    "pensiones": [ESTADO],
+    "vivienda-publica": [CCAA],
+    "transporte-publico": [LOCAL, CCAA, ESTADO],     # urbano / interurbano / cercanías
+    "ordenacion-trafico": [LOCAL],
+    "empadronamiento": [LOCAL],
+    "catastro": [ESTADO],
 }
 
 # pistas de sujeto por nivel — regex sobre texto normalizado (sin tildes)

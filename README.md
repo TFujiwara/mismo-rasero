@@ -100,8 +100,10 @@ La honestidad sobre lo que falta es parte del método:
    persista veredictos ligados a declaraciones (Fase 4 v2).
 3. El módulo de vídeo está implementado pero no ejecutado en producción
    (requiere modelos whisper/pyannote y HF_TOKEN para diarización).
-4. El índice de competencias crece por oleadas — el alcance del veredicto
-   competencial es exactamente el del índice.
+4. El índice de competencias: **18 competencias estructuradas** (con cadena
+   competencial, niveles decisorios y fuente BOE verificada vía ELI) — el
+   alcance del veredicto crece con el índice. Fuentes siempre verificadas
+   contra boe.es/eli/es/... antes de sembrar.
 5. La afiliación exacta municipio→mancomunidad requiere el Censo de Entes
    Locales: /calle muestra las mancomunidades reales de la provincia con la
    afiliación declarada pendiente.
