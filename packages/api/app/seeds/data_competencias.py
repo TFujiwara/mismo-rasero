@@ -269,6 +269,177 @@ COMPETENCIAS: list[dict] = [
         "palabras_clave": ["catastro", "referencia catastral", "valor catastral",
                            "certificado catastral", "catastral"],
     },
+    {
+        "nombre": "Prestación por desempleo (el paro)",
+        "slug": "desempleo",
+        "descripcion_llana": "El paro lo gestiona el SEPE, del Estado, con la regla "
+        "de la Ley General de la Seguridad Social. Ni la CCAA ni el ayuntamiento "
+        "pueden cambiar cuantías o duración.",
+        "descripcion_tecnica": "Estado: SEPE y prestación por desempleo (LGSS, "
+        "RDLeg 8/2015; art. 149.1.17 CE) -> Comunidad Autónoma NO decide cuantías "
+        "-> Ayuntamiento NO decide cuantías.",
+        "articulo_legal": "LGSS (RDLeg 8/2015)",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2015/10/30/8",
+        "palabras_clave": ["paro", "desempleo", "prestación por desempleo",
+                           "sepe", "subsidio", "el subsidio del paro"],
+    },
+    {
+        "nombre": "IVTM — Impuesto de circulación",
+        "slug": "ivtm",
+        "descripcion_llana": "El impuesto de circulación lo decide, fija y cobra tu "
+        "ayuntamiento dentro de la horquilla legal que fija el Estado.",
+        "descripcion_tecnica": "Estado: TRLHL (RDLg 2/2004, art. 95-100) fija el "
+        "impuesto y su horquilla -> Ayuntamiento: fija el tipo en ordenanza "
+        "(BOP), gestiona y recauda el 100%.",
+        "articulo_legal": "RDLg 2/2004 art. 95-100",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2004/03/05/2",
+        "palabras_clave": ["ivtm", "impuesto de circulación", "impuesto de matrícula",
+                           "pagar el circulación", "bajar el circulación"],
+    },
+    {
+        "nombre": "Plusvalía municipal (IIVTNU)",
+        "slug": "plusvalia",
+        "descripcion_llana": "La plusvalía municipal la fija y cobra tu "
+        "ayuntamiento; el Estado regula el impuesto y sus límites tras las "
+        "sentencias del Constitucional.",
+        "descripcion_tecnica": "Estado: TRLHL (RDLg 2/2004, art. 96-110, redactado "
+        "tras STC 59/2017 y 126/2019) -> Ayuntamiento: fija el tipo en ordenanza "
+        "y liquida cuando vendes o donas un inmueble.",
+        "articulo_legal": "RDLg 2/2004 art. 96-110",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2004/03/05/2",
+        "palabras_clave": ["plusvalía", "plusvalia municipal", "iivtnu",
+                           "plusvalía al vender", "impuesto de plusvalía"],
+    },
+    {
+        "nombre": "Costas — playas y dominio público marítimo",
+        "slug": "costas",
+        "descripcion_llana": "Las playas y la franja costera son dominio público "
+        "del Estado (Costas). El ayuntamiento limpia y presta servicios en la "
+        "playa, pero las licencias y deslindeciones son del Estado.",
+        "descripcion_tecnica": "Estado: dominio público marítimo-terrestre (Ley "
+        "22/1988 de Costas; Costas del Estado/MITECO) -> Ayuntamiento: servicios "
+        "en la playa (limpieza, socorrismo si convenio) -> Comunidad Autónoma: "
+        "algún papel en urbanismo colindante.",
+        "articulo_legal": "Ley 22/1988 de Costas",
+        "fuente_url": "https://www.boe.es/eli/es/l/1988/07/28/22",
+        "palabras_clave": ["costas", "playas", "playa pública", "deslinde",
+                           "chiringuito", "dominio público marítimo"],
+    },
+    {
+        "nombre": "Extranjería — residencia y permisos",
+        "slug": "extranjeria",
+        "descripcion_llana": "Permisos de residencia y trabajo, asilo y extranjería "
+        "son del Estado. Ninguna comunidad ni ayuntamiento puede dar papeles — "
+        "aunque sí padronar (que es municipal).",
+        "descripcion_tecnica": "Estado: extranjería (LO 4/2000; art. 149.1.2 CE) -> "
+        "Comunidad Autónoma NO expide permisos -> Ayuntamiento: solo el padrón "
+        "(LBRL art. 16).",
+        "articulo_legal": "LO 4/2000 + art. 149.1.2 CE",
+        "fuente_url": "https://www.boe.es/eli/es/lo/2000/01/11/4",
+        "palabras_clave": ["extranjería", "permiso de residencia", "papeles",
+                           "asilo", "refugiados", "nIE", "TIE"],
+    },
+    {
+        "nombre": "Evaluación ambiental — estudios de impacto",
+        "slug": "evaluacion-ambiental",
+        "descripcion_llana": "Los estudios de impacto ambiental de grandes obras "
+        "los tramita el Estado o la Comunidad según quién autorice la obra; la "
+        "ley marco es estatal.",
+        "descripcion_tecnica": "Estado: ley marco de evaluación ambiental (Ley "
+        "21/2013) y proyectos estatales -> Comunidad Autónoma: proyectos "
+        "autonómicos y su evaluación -> Ayuntamiento: alegaciones en su término.",
+        "articulo_legal": "Ley 21/2013 de evaluación ambiental",
+        "fuente_url": "https://www.boe.es/eli/es/l/2013/12/09/21",
+        "palabras_clave": ["impacto ambiental", "evaluación ambiental",
+                           "declaración de impacto", "obra ambiental", "medio ambiente"],
+    },
+    {
+        "nombre": "Universidad pública",
+        "slug": "universidad",
+        "descripcion_llana": "Las universidades públicas las crea una ley y las "
+        "financian Estado y Comunidad: la Comunidad gestiona el día a día y las "
+        "plazas de profesorado.",
+        "descripcion_tecnica": "Estado: marco del Sistema Universitario (LSU, LO "
+        "2/2023) y universidades estatales -> Comunidad Autónoma: crea y financia "
+        "universidades, plazas y profesorado (Estatut art. 57) -> Ayuntamiento NO.",
+        "articulo_legal": "LSU (LO 2/2023) + Estatut art. 57",
+        "fuente_url": "https://www.boe.es/eli/es/lo/2023/03/22/2",
+        "palabras_clave": ["universidad", "universidades públicas", "plazas universidad",
+                           "profesor universitario", "grados", "máster oficial"],
+    },
+    {
+        "nombre": "PAC — ayudas agrícolas europeas",
+        "slug": "pac-subsidios",
+        "descripcion_llana": "Las ayudas agrícolas son dinero europeo (PAC) que "
+        "gestiona tu Comunidad Autónoma. Bruselas pone las reglas y el dinero; "
+        "la Generalitat o la consejería de agricultura paga.",
+        "descripcion_tecnica": "UE: reglas y financiación de la PAC (Reglamento "
+        "(UE) 2021/2115) -> Estado: marco nacional (RDL 1/2025) -> Comunidad "
+        "Autónoma: pago y control de las ayudas (ej. Generalitat, Conselleria "
+        "d'Agricultura).",
+        "articulo_legal": "Reglamento (UE) 2021/2115",
+        "fuente_url": "https://eur-lex.europa.eu/eli/reg/2021/2115/oj",
+        "palabras_clave": ["pac", "subvenciones agrícolas", "ayudas agrícolas",
+                           "agricultura", "campo", "pago único"],
+    },
+    {
+        "nombre": "Becas públicas",
+        "slug": "becas",
+        "descripcion_llana": "Las becas generales las convoca el Ministerio de "
+        "Educación (Estado). Las CCAA añaden convocatorias propias; el "
+        "ayuntamiento no da becas de estudio.",
+        "descripcion_tecnica": "Estado: becas generales (RD 1723/2007; Ministerio "
+        "de Educación) -> Comunidad Autónoma: convocatorias propias y "
+        "universidades -> Ayuntamiento NO otorga becas generales.",
+        "articulo_legal": "RD 1723/2007 (becas generales)",
+        "fuente_url": "https://www.boe.es/eli/es/rd/2007/12/21/1723",
+        "palabras_clave": ["becas", "beca", "beca mec", "becas generales",
+                           "beca de estudios", "ayuda al estudio"],
+    },
+    {
+        "nombre": "Medicamentos y farmacia",
+        "slug": "farmacia",
+        "descripcion_llana": "Los medicamentos los autoriza la Agencia Española de "
+        "Medicamentos (Estado). Las oficinas de farmacia las autoriza la Comunidad "
+        "Autónoma; el ayuntamiento no interviene.",
+        "descripcion_tecnica": "Estado: medicamentos y AEMPS (Ley 29/2006) -> "
+        "Comunidad Autónoma: autorización y ordenación de oficinas de farmacia -> "
+        "Ayuntamiento NO interviene.",
+        "articulo_legal": "Ley 29/2006 de garantías y uso racional de medicamentos",
+        "fuente_url": "https://www.boe.es/eli/es/l/2006/07/26/29",
+        "palabras_clave": ["medicamentos", "farmacia", "oficina de farmacia",
+                           "aemps", "receta médica", "precio de medicamentos"],
+    },
+    {
+        "nombre": "Contratos públicos (licitaciones)",
+        "slug": "contratos-publicos",
+        "descripcion_llana": "Las reglas de los contratos públicos las fija una ley "
+        "estatal; cada administración (ayuntamiento, Generalitat, Estado) licita "
+        "sus propios contratos con esas reglas.",
+        "descripcion_tecnica": "Estado: ley marco de contratos (Ley 9/2017) -> "
+        "Cada administración licita lo suyo: ayuntamiento (obras y servicios "
+        "municipales), Comunidad, Estado -> Los pliegos y adjudicaciones se "
+        "publican en la plataforma estatal y en los boletines.",
+        "articulo_legal": "Ley 9/2017 de Contratos del Sector Público",
+        "fuente_url": "https://www.boe.es/eli/es/l/2017/11/08/9",
+        "palabras_clave": ["contratos públicos", "licitación", "licitaciones",
+                           "adjudicación", "pliego", "contratación pública"],
+    },
+    {
+        "nombre": "Energía eléctrica — tarifas y factura",
+        "slug": "energia-electrica",
+        "descripcion_llana": "Las tarifas y el mercado eléctrico los regula el "
+        "Estado (CNMC). Tu ayuntamiento no puede bajar la luz — solo el alumbrado "
+        "público que paga como consumidor.",
+        "descripcion_tecnica": "Estado: sector eléctrico (Ley 24/2013; CNMC "
+        "regula tarifas y peajes) -> Comunidad Autónoma: autorización de "
+        "instalaciones menores -> Ayuntamiento: alumbrado público (es un "
+        "consumidor más, LBRL art. 25.2).",
+        "articulo_legal": "Ley 24/2013 del Sector Eléctrico",
+        "fuente_url": "https://www.boe.es/eli/es/l/2013/12/26/24",
+        "palabras_clave": ["luz", "energía eléctrica", "factura de la luz",
+                           "tarifa eléctrica", "pvpc", "apagón", "alumbrado público"],
+    },
 ]
 
 

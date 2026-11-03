@@ -11,7 +11,7 @@ from app.services.niveles import NIVELES_COMPETENTES
 
 def test_lote_competencias_cuenta():
     slugs = {c["slug"] for c in COMPETENCIAS}
-    assert len(slugs) == len(COMPETENCIAS) == 18
+    assert len(slugs) == len(COMPETENCIAS) == 30
     assert NIVELES_COMPETENTES.keys() == slugs
 
 
@@ -22,6 +22,7 @@ def test_fuentes_verificadas():
             "https://www.boe.es/eli/",
             "https://dogv.gva.es",
             "https://www.boe.es/buscar/act.php?id=BOE-A-",
+            "https://eur-lex.europa.eu/eli/",
         )), f"{c['slug']}: fuente no verificada: {url}"
         assert c["articulo_legal"], c["slug"]
 
