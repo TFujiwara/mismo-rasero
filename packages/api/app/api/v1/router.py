@@ -384,6 +384,19 @@ def ingest_boe_norma(identificador: str, db: Session = Depends(get_db)):
         raise HTTPException(502, f"ingesta falló: {exc}") from exc
 
 
+@router.post("/ingest/legislacion-vasca")
+def ingest_legislacion_vasca(desde: str = Query("2020-01-01"),
+                             db: Session = Depends(get_db)):
+    """Legislación vasca (leyes) vía SPARQL del grafo ELI — desde la fecha dada.
+    La fuente citada es la página consolidada oficial de Legegunea."""
+    from app.services.legislacion_vasca import ingestar_legislacion_vasca
+
+    try:
+        return ingestar_legislacion_vasca(db, desde)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(502, f"ingesta falló: {exc}") from exc
+
+
 @router.post("/seed")
 def seed(target: str = Query(
     "all",
