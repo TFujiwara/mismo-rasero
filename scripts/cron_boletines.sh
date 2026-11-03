@@ -27,6 +27,12 @@ for FECHA in "$HOY" "$AYER"; do
   sleep 2
 done
 
+# BOCM y DOE: solo el último boletín (como DOGV)
+RESP=$(curl -s -m 1500 -X POST "$API/api/v1/ingest/boletin/BOCM?fecha=$HOY")
+log "BOCM $HOY -> ${RESP:-SIN RESPUESTA}"
+RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/DOE?fecha=$HOY")
+log "DOE $HOY -> ${RESP:-SIN RESPUESTA}"
+
 # DOGV: la API solo expone el último número; fecha=hoy
 RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/DOGV?fecha=$HOY")
 log "DOGV $HOY -> ${RESP:-SIN RESPUESTA}"
