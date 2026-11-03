@@ -397,6 +397,27 @@ def ingest_legislacion_vasca(desde: str = Query("2020-01-01"),
         raise HTTPException(502, f"ingesta falló: {exc}") from exc
 
 
+@router.get("/personas")
+def personas(nombre: str = Query(..., min_length=3),
+             db: Session = Depends(get_db)):
+    """Pilar 5 (§05): busca cargos públicos por nombre — diputados del Congreso
+    (grupo, circunscripción, alta) vía datos abiertos del Congreso."""
+    from app.services.personas import buscar_personas
+
+    return buscar_personas(db, nombre)
+
+
+@router.post("/ingest/personas-congreso")
+def ingest_personas_congreso(db: Session = Depends(get_db)):
+    """Pilar 5: ingesta de diputados del Congreso (datos abiertos)."""
+    from app.services.personas import ingestar_congreso
+
+    try:
+        return ingestar_congreso(db)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(502, f"ingesta falló: {exc}") from exc
+
+
 @router.post("/seed")
 def seed(target: str = Query(
     "all",

@@ -118,7 +118,7 @@ La honestidad sobre lo que falta es parte del método:
 | 2 | Mapa de poder + competencias + `/calle` con geocodificación | ✅ |
 | 3 | Presupuestos EELL de toda España + comparación interanual + flujo normativo | ✅ |
 | 4 v1 | Veredicto competencial determinista + seam LLM | ✅ |
-| 4 v2 | Extracción semántica con LLM + pilar de personas (sueldos, patrimonio, agendas) | 🔜 |
+| 5 | Pilar 5 personas — Congreso de los Diputados (datos abiertos: diputados activos, históricos, grupo, circunscripción, alta, biografía) | **v1 en producción** — búsqueda en `/persona`; pendiente: votaciones por sesión (el portal las publica como planchas PNG en algunas sesiones — requiere migración de esquema y OCR en esos casos) y otras instituciones |
 | 5 | Verificador de programas electorales + generación de escritos | 🔜 |
 | 6 | Verificación de vídeo (solo análisis) | código listo, sin ejecutar |
 | 7 | Radar R0R1R2 + export STIX2 + cron de ingesta | 🔜 |
