@@ -41,6 +41,10 @@ for FECHA in "$ANTIER" "$AYER"; do
   sleep 2
 done
 
+# DOG (Galicia): feed de sumario del día
+RESP=$(curl -s -m 1500 -X POST "$API/api/v1/ingest/boletin/DOG?fecha=$HOY")
+log "DOG $HOY -> ${RESP:-SIN RESPUESTA}"
+
 # DOGV: la API solo expone el último número; fecha=hoy
 RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/DOGV?fecha=$HOY")
 log "DOGV $HOY -> ${RESP:-SIN RESPUESTA}"

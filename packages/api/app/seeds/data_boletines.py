@@ -44,6 +44,7 @@ BOLETINES: list[dict] = [
      "metodo": "HTML", "dificultad": "media"},
     {"sigla": "DOG", "nombre": "Diario Oficial de Galicia",
      "url_base": "https://www.xunta.gal/diario-oficial-galicia",
+     # RSS de sumario diario verificado (Sumario_es.rss, 54 disposiciones/día)
      "metodo": "RSS", "dificultad": "baja"},
     {"sigla": "BOCM", "nombre": "Boletín Oficial de la Comunidad de Madrid",
      "url_base": "https://www.bocm.es",
