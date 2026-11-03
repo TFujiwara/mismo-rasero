@@ -20,6 +20,13 @@ for FECHA in "$HOY" "$AYER"; do
   sleep 2
 done
 
+# BOJA: fecha direccionable (calendario + boletín por número)
+for FECHA in "$HOY" "$AYER"; do
+  RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/BOJA?fecha=$FECHA")
+  log "BOJA $FECHA -> ${RESP:-SIN RESPUESTA}"
+  sleep 2
+done
+
 # DOGV: la API solo expone el último número; fecha=hoy
 RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/DOGV?fecha=$HOY")
 log "DOGV $HOY -> ${RESP:-SIN RESPUESTA}"

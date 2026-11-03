@@ -13,7 +13,8 @@ BOLETINES: list[dict] = [
      "metodo": "API_JSON", "dificultad": "baja"},
     {"sigla": "BOJA", "nombre": "Boletín Oficial de la Junta de Andalucía",
      "url_base": "https://www.juntadeandalucia.es/eboja",
-     "metodo": "RSS", "dificultad": "media-baja"},
+     # API tabular pública verificada: datos.juntadeandalucia.es/api/v0/boja
+     "metodo": "API_JSON", "dificultad": "baja"},
     {"sigla": "BOA", "nombre": "Boletín Oficial de Aragón",
      "url_base": "https://www.boa.aragon.es",
      "metodo": "RSS", "dificultad": "media-baja"},
