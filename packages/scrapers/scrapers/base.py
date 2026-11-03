@@ -85,6 +85,7 @@ def registrar_adapters() -> dict[str, type[BoletinAdapter]]:
     from scrapers.bocm import BocmAdapter
     from scrapers.boe import BoeAdapter
     from scrapers.boja import BojaAdapter
+    from scrapers.bopv import BopvAdapter
     from scrapers.doe import DoeAdapter
     from scrapers.dogv import DogvAdapter
     from scrapers.doue import DoueAdapter
@@ -93,6 +94,7 @@ def registrar_adapters() -> dict[str, type[BoletinAdapter]]:
         "BOE": BoeAdapter,
         "BOJA": BojaAdapter,
         "BOCM": BocmAdapter,
+        "BOPV": BopvAdapter,
         "DOE": DoeAdapter,
         "DOGV": DogvAdapter,
         "DOUE": DoueAdapter,

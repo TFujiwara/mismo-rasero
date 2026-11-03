@@ -33,6 +33,14 @@ log "BOCM $HOY -> ${RESP:-SIN RESPUESTA}"
 RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/DOE?fecha=$HOY")
 log "DOE $HOY -> ${RESP:-SIN RESPUESTA}"
 
+# BOPV: la API va un día por detrás del portal — ingesta con dos días de margen
+ANTIER=$(date -I -d "2 days ago")
+for FECHA in "$ANTIER" "$AYER"; do
+  RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/BOPV?fecha=$FECHA")
+  log "BOPV $FECHA -> ${RESP:-SIN RESPUESTA}"
+  sleep 2
+done
+
 # DOGV: la API solo expone el último número; fecha=hoy
 RESP=$(curl -s -m 900 -X POST "$API/api/v1/ingest/boletin/DOGV?fecha=$HOY")
 log "DOGV $HOY -> ${RESP:-SIN RESPUESTA}"
