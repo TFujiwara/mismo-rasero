@@ -1,4 +1,4 @@
-# Mismo Rasero
+![](https://cdn.fbsbx.com/v/t65.102178-21/889178353_1095341016831854_1113539293528550145_n.jpg/mr_horizontal_navy.png?_nc_ht=cdn.fbsbx.com&_nc_ohc=lcozYgPNFnUQ7kNvwHCbD9N&sdl=0&ccb=14-4&oh=00_AQQf2wL4rft5A5BzUsts4Cw7WvDkmHvI8AemFCiITE_YUg&oe=6B1128A0&_nc_sid=4ee932)
 
 > Quién puede hacer qué, con la ley delante.
 
