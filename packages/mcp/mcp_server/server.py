@@ -12,9 +12,9 @@ Arranque:
 Config de cliente (ejemplo):
   {
     "mcpServers": {
-      "quien-manda": {
+      "mismo-rasero": {
         "command": "uv",
-        "args": ["--directory", "/home/cristian/blueprint", "run", "blueprint-mcp"],
+        "args": ["--directory", "/ruta/al/repo", "run", "blueprint-mcp"],
         "env": {"DATABASE_URL": "postgresql+psycopg://blueprint:blueprint@localhost:5432/blueprint"}
       }
     }
