@@ -1,0 +1,26 @@
+[project]
+name = "blueprint-scrapers"
+version = "0.1.0"
+description = "Adaptadores de boletines oficiales — blueprint §13/§14"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "feedparser>=6.0",
+    "beautifulsoup4>=4.12",
+    "click>=8.1",
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+# DOGV (SPA Liferay) necesita render JS — §13/§20 ya incluyen Playwright en el stack.
+playwright = ["playwright>=1.45"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["scrapers"]
+
+[project.scripts]
+boletines = "scrapers.cli:main"

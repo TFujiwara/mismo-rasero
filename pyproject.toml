@@ -1,0 +1,32 @@
+[project]
+name = "blueprint-monorepo"
+version = "0.1.0"
+description = "Sistema Operativo de España — monorepo (blueprint técnico v2.5)"
+requires-python = ">=3.11"
+dependencies = [
+    "blueprint-api",
+    "blueprint-scrapers",
+    "blueprint-disarm",
+    "blueprint-video",
+    "blueprint-mcp",
+]
+
+[tool.uv.workspace]
+members = ["packages/api", "packages/scrapers", "packages/disarm", "packages/video", "packages/mcp"]
+
+[tool.uv.sources]
+blueprint-api = { workspace = true }
+blueprint-scrapers = { workspace = true }
+blueprint-disarm = { workspace = true }
+blueprint-video = { workspace = true }
+blueprint-mcp = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"

@@ -1,0 +1,9 @@
+{
+  "name": "blueprint-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "web": "pnpm --filter @blueprint/web dev",
+    "web:build": "pnpm --filter @blueprint/web build"
+  }
+}
