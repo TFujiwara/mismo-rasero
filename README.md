@@ -109,6 +109,14 @@ La honestidad sobre lo que falta es parte del método:
    afiliación declarada pendiente.
 6. Antes de cualquier publicación pública amplia: revisión legal (RGPD,
    honor/rectificación, ToS de las plataformas) — ver §22 del blueprint.
+7. **Cabeceras CCAA en cola**: DOGC y BOA resisten el scraping sin navegador
+   (DOGC: Liferay con widgets httpFetch cuya URL de datos solo se ve en el
+   navegador; BOA: Angular cuya ruta de datos dispara al buscar). Playbook
+   conocido: abrir el portal, hacer una búsqueda de fecha y copiar la llamada
+   de datos desde DevTools → Network (como con DIR3 y BOPV). DOG ya está
+   operativo vía RSS de sumario diario. Los boletines forales (BOTHA, BOB,
+   BOG) van como filas BOP en el seed — son los boletines de los Territorios
+   Históricos (capacidad legislativa foral), no BOPs municipales.
 
 ## Hoja de ruta
 
