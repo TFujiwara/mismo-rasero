@@ -51,6 +51,16 @@ NIVELES_COMPETENTES: dict[str, list[str]] = {
     "farmacia": [ESTADO, CCAA],
     "contratos-publicos": [ESTADO, CCAA, LOCAL],
     "energia-electrica": [ESTADO],
+    "permiso-conducir": [ESTADO],
+    "dependencia": [CCAA, LOCAL],
+    "inspeccion-trabajo": [ESTADO],
+    "incendios-forestales": [CCAA],
+    "patrimonio-cultural": [CCAA, LOCAL],
+    "igualdad": [ESTADO, CCAA, LOCAL],
+    "cementerios": [LOCAL],
+    "comercio-ambulante": [LOCAL],
+    "vivienda-turistica": [CCAA, LOCAL],
+    "iae": [LOCAL],
 }
 
 # pistas de sujeto por nivel — regex sobre texto normalizado (sin tildes)

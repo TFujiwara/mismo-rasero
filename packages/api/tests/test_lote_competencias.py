@@ -11,7 +11,7 @@ from app.services.niveles import NIVELES_COMPETENTES
 
 def test_lote_competencias_cuenta():
     slugs = {c["slug"] for c in COMPETENCIAS}
-    assert len(slugs) == len(COMPETENCIAS) == 30
+    assert len(slugs) == len(COMPETENCIAS) == 40
     assert NIVELES_COMPETENTES.keys() == slugs
 
 

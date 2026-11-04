@@ -440,6 +440,142 @@ COMPETENCIAS: list[dict] = [
         "palabras_clave": ["luz", "energía eléctrica", "factura de la luz",
                            "tarifa eléctrica", "pvpc", "apagón", "alumbrado público"],
     },
+    {
+        "nombre": "Permiso de conducir",
+        "slug": "permiso-conducir",
+        "descripcion_llana": "El carnet de conducir lo expide la DGT, del Estado. "
+        "Ni la comunidad ni el ayuntamiento pueden dártelo o retirártelo.",
+        "descripcion_tecnica": "Estado: permisos de conducción (RDLg 6/2015; DGT) -> "
+        "Comunidad Autónoma NO expide -> Ayuntamiento NO expide.",
+        "articulo_legal": "RDLg 6/2015 (Ley de Tráfico)",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2015/10/30/6",
+        "palabras_clave": ["carnet de conducir", "permiso de conducir",
+                           "retirada del carnet", "puntos del carnet", "dgt"],
+    },
+    {
+        "nombre": "Dependencia — Ley de Dependencia",
+        "slug": "dependencia",
+        "descripcion_llana": "Las ayudas para personas dependientes (ayuda a domicilio, "
+        "residencias, cuidadoras) las gestiona tu Comunidad Autónoma con el marco "
+        "estatal de la Ley de Dependencia. El ayuntamiento participa en algunos "
+        "servicios sociales.",
+        "descripcion_tecnica": "Estado: marco (Ley 39/2006, SAAD) -> Comunidad "
+        "Autónoma: valora grados y paga/gestiona los servicios -> Ayuntamiento: "
+        "algunos servicios sociales de proximidad (LBRL art. 25.2.k).",
+        "articulo_legal": "Ley 39/2006 (SAAD) + LBRL art. 25.2.k",
+        "fuente_url": "https://www.boe.es/eli/es/l/2006/12/14/39",
+        "palabras_clave": ["dependencia", "ley de dependencia", "ayuda a domicilio",
+                           "residencia", "cuidadora", "grado de dependencia", "saad"],
+    },
+    {
+        "nombre": "Inspección de trabajo",
+        "slug": "inspeccion-trabajo",
+        "descripcion_llana": "Las denuncias por explotación laboral, sin contrato o "
+        "impago las tramita la Inspección de Trabajo, que es del Estado.",
+        "descripcion_tecnica": "Estado: Inspección de Trabajo y Seguridad Social "
+        "(RDLeg 5/2000, TRLISOS) -> Comunidad Autónoma NO inspecciona (salvo "
+        "transferidas algunas funciones) -> Ayuntamiento NO inspecciona.",
+        "articulo_legal": "RDLeg 5/2000 (TRLISOS)",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2000/08/04/5",
+        "palabras_clave": ["inspección de trabajo", "trabajo sin contrato",
+                           "explotación laboral", "impago de sueldo", "denuncia laboral"],
+    },
+    {
+        "nombre": "Incendios forestales",
+        "slug": "incendios-forestales",
+        "descripcion_llana": "Apagar incendios forestales es de la Comunidad "
+        "Autónoma (con refuerzo estatal de BRIF si se pide). El ayuntamiento no "
+        "manda en el monte.",
+        "descripcion_tecnica": "Comunidad Autónoma: extinción y prevención en su "
+        "monte (Ley 43/2003 de Montes; competencias estatutarias) -> Estado: "
+        "refuerzo BRIF si se solicita -> Ayuntamiento: suburbano y avisos.",
+        "articulo_legal": "Ley 43/2003 de Montes",
+        "fuente_url": "https://www.boe.es/eli/es/l/2003/11/21/43",
+        "palabras_clave": ["incendio forestal", "incendios", "monte", "quema agrícola",
+                           "brif", "preaviso de incendios"],
+    },
+    {
+        "nombre": "Patrimonio histórico y cultural",
+        "slug": "patrimonio-cultural",
+        "descripcion_llana": "Proteger castillos, yacimientos y bienes culturales es "
+        "de las CCAA (con la ley estatal de base). El ayuntamiento cuida los bienes "
+        "que le pertenecen.",
+        "descripcion_tecnica": "Estado: ley básica de patrimonio histórico (Ley "
+        "16/1985) -> Comunidad Autónoma: catálogo, excavaciones y autorizaciones "
+        "-> Ayuntamiento: bienes municipales y conservación urbana.",
+        "articulo_legal": "Ley 16/1985 del Patrimonio Histórico Español",
+        "fuente_url": "https://www.boe.es/eli/es/l/1985/06/25/16",
+        "palabras_clave": ["patrimonio", "yacimiento", "castillo", "bien de interés cultural",
+                           "excavación", "monumento histórico"],
+    },
+    {
+        "nombre": "Políticas de igualdad",
+        "slug": "igualdad",
+        "descripcion_llana": "El marco de igualdad entre mujeres y hombres es ley "
+        "estatal; las CCAA desarrollan políticas propias; los ayuntamientos tienen "
+        "sus concejalías de igualdad.",
+        "descripcion_tecnica": "Estado: marco (LO 3/2007; Ley Orgánica 1/2004 "
+        "violencia de género) -> Comunidad Autónoma: políticas y centros -> "
+        "Ayuntamiento: concejalías de igualdad y servicios de proximidad.",
+        "articulo_legal": "LO 3/2007 para la igualdad efectiva",
+        "fuente_url": "https://www.boe.es/eli/es/lo/2007/03/22/3",
+        "palabras_clave": ["igualdad", "violencia de género", "políticas de igualdad",
+                           "centro de la mujer", "brecha salarial"],
+    },
+    {
+        "nombre": "Cementerios",
+        "slug": "cementerios",
+        "descripcion_llana": "Los cementerios son un servicio obligatorio del "
+        "ayuntamiento: nichos, enterramientos y sus tasas municipales.",
+        "descripcion_tecnica": "Ayuntamiento: cementerio municipal, nichos y tasas "
+        "(LBRL art. 25.2; servicio obligatorio) -> Comunidad Autónoma: sanidad "
+        "funeraria -> Estado: reglamento general de policías funerarias.",
+        "articulo_legal": "LBRL art. 25.2 (servicio obligatorio)",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["cementerio", "nicho", "enterramiento", "sepultura",
+                           "tasas de cementerio", "funeraria municipal"],
+    },
+    {
+        "nombre": "Mercados y comercio ambulante",
+        "slug": "comercio-ambulante",
+        "descripcion_llana": "Los mercados municipales y los puestos ambulantes los "
+        "autoriza y ordena el ayuntamiento con sus ordenanzas.",
+        "descripcion_tecnica": "Ayuntamiento: mercados municipales, ferias y comercio "
+        "ambulante (LBRL art. 25.2.a; ordenanzas municipales) -> Comunidad Autónoma: "
+        "marco de comercio interior.",
+        "articulo_legal": "LBRL art. 25.2.a",
+        "fuente_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+        "palabras_clave": ["mercado municipal", "comercio ambulante", "feria",
+                           "puesto callejero", "mercadillo"],
+    },
+    {
+        "nombre": "Viviendas turísticas",
+        "slug": "vivienda-turistica",
+        "descripcion_llana": "Los pisos turísticos necesitan registro autonómico y "
+        "cumplir la ordenanza municipal: ambos niveles intervienen.",
+        "descripcion_tecnica": "Comunidad Autónoma: registro de viviendas turísticas "
+        "(Decreto 75/2023 CV) -> Ayuntamiento: licencia y compatibilidad con "
+        "ordenanza municipal (LBRL art. 25.2.a) -> Estado: marco de vivienda "
+        "(Ley 12/2023 lo regula para alquiler).",
+        "articulo_legal": "Ley 12/2023 + LBRL art. 25.2.a",
+        "fuente_url": "https://www.boe.es/eli/es/l/2023/05/24/12",
+        "palabras_clave": ["piso turístico", "vivienda turística", "airbnb",
+                           "alquiler turístico", "licencia turística"],
+    },
+    {
+        "nombre": "IAE — Impuesto de Actividades Económicas",
+        "slug": "iae",
+        "descripcion_llana": "El IAE lo pagan los negocios y lo fija y recauda el "
+        "ayuntamiento dentro del marco estatal (los pequeños negocios están "
+        "exentos por ley).",
+        "descripcion_tecnica": "Estado: TRLHL (RDLg 2/2004, art. 78-91) define el "
+        "impuesto y las exenciones (matríz y exentos <1M€) -> Ayuntamiento: fija "
+        "tipos en ordenanza y recauda el 100%.",
+        "articulo_legal": "RDLg 2/2004 art. 78-91",
+        "fuente_url": "https://www.boe.es/eli/es/rdlg/2004/03/05/2",
+        "palabras_clave": ["iae", "impuesto de actividades económicas",
+                           "licencia fiscal", "alta de autónomos", "iae exento"],
+    },
 ]
 
 
