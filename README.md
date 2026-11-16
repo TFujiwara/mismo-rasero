@@ -101,7 +101,7 @@ escribir el adaptador, y lo que falla se documenta aquí.
 | BOCM | ✅ operativa | Feed `ultimo-boletin.xml` + XML espejo por documento (mismo patrón que el BOE) |
 | DOE | ✅ operativa | RSS por secciones (`rss.php?seccion=1..4`) con PDF directo |
 | DOG | ✅ operativa | RSS de sumario diario (`Sumario_es.rss`, 54 disposiciones/día) + PDF desde la página de cada documento |
-| BOPV | 🟡 metadatos | API REST en `api.euskadi.eus` (OpenAPI v0.0.1): los actos fluyen; los PDF de `www.euskadi.eus` dan 406 a toda nuestra red (ban confirmado: portada incluida, API libre). Salida: proxy vía `HTTPS_PROXY` |
+| BOPV | ✅ operativa y completa (2026) | API REST en `api.euskadi.eus` (OpenAPI v0.0.1): 2.756 actos de todo el ejercicio 2026 con PDF y hash SHA-256 (backfill mensual reanudable, `app/services/bopv_backfill.py`). El cron diario cubre el día a día con 2 días de margen (la API va un día por detrás del portal). Notas: `publishDate` viene en UTC — convertir a Europe/Madrid o el filtro de día come datos; el grafo ELI SPARQL añade legislación vasca histórica |
 | Presupuestos EELL | ✅ toda España | Portal público SGCIEF: scraping con token antiforgery rotatorio; runner por lotes reanudable. Las liquidaciones aún no se publican en consulta pública |
 | DIR3 | ✅ ingesta completa | 25.178 EELL + 17.025 CCAA + 19.919 AGE. El CTT está tras F5 TrafficShield: los ficheros se bajan a mano del navegador |
 | CartoCiudad | ⚠️ caída | La API REST responde 500 server-side; geocodificación vía Nominatim/OSM estructurada (documentado como fuente no oficial) |
