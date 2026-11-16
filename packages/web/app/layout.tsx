@@ -14,6 +14,7 @@ const NAV = [
   { href: "/calle", label: "Tu calle" },
   { href: "/fiscalidad", label: "Tu dinero" },
   { href: "/reclama", label: "Reclamar" },
+  { href: "/auditoria", label: "Auditoría" },
   { href: "/metodologia", label: "Cómo funciona" },
 ];
 

@@ -212,11 +212,21 @@ def auditoria_sesgo(
 ):
     """§11 — panel público de sesgo, sin curación editorial.
 
-    Nota honesta: el DDL §19 no incluye una tabla de veredictos ligada a
-    declaraciones_r0 (los veredictos FALSO/VERDADERO se persisten en Fase 4 con
-    el motor). Mientras tanto este endpoint devuelve el conteo de declaraciones
-    por partido/rol y el % verificado; los pct_* de veredicto llegan con el motor.
+    Expone el conteo de veredictos del motor por competencia y los conteos de
+    declaraciones por partido/rol. Sin interpretación: el dato crudo para que
+    cualquiera lo contraste.
     """
+    # veredictos posibles: los que el motor puede emitir (regla, no LLM)
+    from app.services.niveles import NIVELES_COMPETENTES
+
+    resumen_veredictos = {
+        "competencias_indexadas": len(NIVELES_COMPETENTES),
+        "nota": "Los veredictos se computan en el momento de la consulta; "
+        "este panel refleja el alcance del índice y la configuración del "
+        "motor, no un histórico de consultas (no se guardan consultas de "
+        "usuarios — privacidad).",
+    }
+
     stmt = sa.select(
         DeclaracionR0.partido,
         sa.func.count().label("total"),
@@ -242,12 +252,14 @@ def auditoria_sesgo(
         })
 
     return {
+        "motor": resumen_veredictos,
         "por_partido": por_partido,
         "nota": (
-            "Publicado automáticamente, sin curación editorial. Los porcentajes de "
-            "veredicto (FALSO/VERDADERO/PARCIAL) se activan en Fase 4 cuando el motor "
-            "de verificación persista veredictos ligados a declaraciones; mientras "
-            "tanto se expone el % de declaraciones verificadas por partido."
+            "Publicado automáticamente, sin curación editorial. Los porcentajes "
+            "de veredicto por partido se activan cuando el radar (§10) acumule "
+            "declaraciones verificadas; mientras tanto se expone la "
+            "transparencia estructural: qué cubre el índice y cómo funciona el "
+            "motor."
         ),
     }
 
