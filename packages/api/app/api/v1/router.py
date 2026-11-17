@@ -174,9 +174,11 @@ def disarm_techniques(
     limit: int = Query(100, le=1000),
     db: Session = Depends(get_db),
 ):
+    """Técnicas RED del framework — filtrables por fase (Plan/Prepare/Execute/
+    Assess) ahora que el mapeo táctica→fase está cerrado."""
     stmt = sa.select(DisarmTechnique)
     if fase:
-        stmt = stmt.where(DisarmTechnique.fase == fase.upper())
+        stmt = stmt.where(DisarmTechnique.fase == fase.title())
     if tipo:
         stmt = stmt.where(DisarmTechnique.tipo == tipo.upper())
     if q:
@@ -188,6 +190,21 @@ def disarm_techniques(
             "descripcion": t.descripcion, "url": t.url, "tipo": t.tipo,
         }
         for t in rows
+    ]
+
+
+@router.get("/disarm/fases")
+def disarm_fases(db: Session = Depends(get_db)):
+    """Conteo de técnicas por fase — para el panel de filtrado."""
+    rows = db.execute(
+        sa.select(DisarmTechnique.fase, sa.func.count())
+        .where(DisarmTechnique.tipo == "RED")
+        .group_by(DisarmTechnique.fase)
+    ).all()
+    orden = {"Plan": 0, "Prepare": 1, "Execute": 2, "Assess": 3}
+    return [
+        {"fase": f, "total": n}
+        for f, n in sorted(rows, key=lambda r: orden.get(r[0], 9))
     ]
 
 

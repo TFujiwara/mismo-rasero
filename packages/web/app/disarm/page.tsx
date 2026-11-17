@@ -14,8 +14,6 @@ type Counter = { id: string; nombre: string; descripcion: string | null };
 
 export const dynamic = "force-dynamic";
 
-const FASES = ["", "Plan", "Prepare", "Execute", "Assess"];
-
 export default async function DisarmPage({
   searchParams,
 }: {
@@ -26,6 +24,7 @@ export default async function DisarmPage({
   const fase = searchParams.fase ?? "";
 
   let items: (Tecnica | Counter)[] = [];
+  let fases: { fase: string | null; total: number }[] = [];
   let error: string | null = null;
   try {
     if (tipo === "BLUE") {
@@ -37,6 +36,13 @@ export default async function DisarmPage({
       if (q) params.set("q", q);
       if (fase) params.set("fase", fase);
       items = await apiGet<Tecnica[]>(`/disarm/techniques?${params}`);
+      try {
+        fases = await apiGet<{ fase: string | null; total: number }[]>(
+          "/disarm/fases"
+        );
+      } catch {
+        fases = []; // los contadores de fase son un extra, no críticos
+      }
     }
   } catch (e) {
     error = e instanceof Error ? e.message : String(e);
@@ -90,21 +96,31 @@ export default async function DisarmPage({
         </form>
       </div>
 
-      {tipo === "RED" && (
-        <div className="mt-3 flex gap-2">
-          {FASES.map((f) => (
-            <a
-              key={f || "todas"}
-              href={`/disarm?tipo=RED${f ? `&fase=${f}` : ""}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
-              className={`rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.4px] ${
-                fase === f
-                  ? "bg-azul-suave text-azul-oscuro"
-                  : "bg-transparent text-ink-soft"
-              }`}
-            >
-              {f || "todas las fases"}
-            </a>
-          ))}
+      {tipo === "RED" && fases.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          <a
+            href={`/disarm?tipo=RED${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+            className={`rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.4px] ${
+              !fase ? "bg-azul text-white" : "bg-azul-suave text-azul-oscuro"
+            }`}
+          >
+            todas
+          </a>
+          {fases.map((f) =>
+            f.fase ? (
+              <a
+                key={f.fase}
+                href={`/disarm?tipo=RED&fase=${f.fase}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+                className={`rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.4px] ${
+                  fase === f.fase
+                    ? "bg-azul text-white"
+                    : "bg-azul-suave text-azul-oscuro"
+                }`}
+              >
+                {f.fase} ({f.total})
+              </a>
+            ) : null
+          )}
         </div>
       )}
 
@@ -123,7 +139,7 @@ export default async function DisarmPage({
                 Nombre
               </th>
               <th className="bg-azul px-2.5 py-2 text-left font-mono text-[9.5px] uppercase tracking-[0.6px] text-[#e8eef4]">
-                {tipo === "RED" ? "Táctica" : "Descripción"}
+                {tipo === "RED" ? "Táctica / Fase" : "Descripción"}
               </th>
             </tr>
           </thead>
@@ -137,7 +153,18 @@ export default async function DisarmPage({
                   {it.nombre}
                 </td>
                 <td className="border-b border-linea px-2.5 py-2 text-ink-soft">
-                  {tipo === "RED" ? (it as Tecnica).tactica ?? "—" : it.descripcion ?? "—"}
+                  {tipo === "RED" ? (
+                    <>
+                      {(it as Tecnica).tactica ?? "—"}
+                      {(it as Tecnica).fase && (
+                        <span className="ml-2 rounded-full bg-sello-oro-suave px-2 py-0.5 font-mono text-[9px] text-sello-oro">
+                          {(it as Tecnica).fase}
+                        </span>
+                        )}
+                    </>
+                  ) : (
+                    it.descripcion ?? "—"
+                  )}
                 </td>
               </tr>
             ))}
