@@ -111,36 +111,41 @@ escribir el adaptador, y lo que falla se documenta aquí.
 
 ## Huecos documentados (no inventados)
 
-La honestidad sobre lo que falta es parte del método:
+La honestidad sobre lo que falta es parte del método. Estado tras la auditoría
+de noviembre 2026 — algunos de estos huecos se cerraron en el camino y así
+queda reflejado:
 
-1. `disarm_techniques.fase` queda NULL — las fuentes actuales de DISARM ya no
-   exponen el agrupado Plan/Prepare/Execute/Assess.
-2. El panel de auditoría de sesgo (`/api/v1/auditoria/sesgo`) muestra conteos
-   por partido/rol; los porcentajes de veredicto se activan cuando el motor
-   persista veredictos ligados a declaraciones.
-3. El módulo de vídeo está implementado pero no ejecutado en producción
-   (requiere modelos whisper/pyannote y HF_TOKEN para diarización).
-4. El índice de competencias: **30 estructuradas** — el alcance del veredicto
-   crece con el índice. Las fuentes se verifican contra boe.es/eli/es/...
-   antes de sembrar (hay un test que lo obliga).
-5. La afiliación exacta municipio→mancomunidad requiere el Censo de Entes
-   Locales: /calle muestra las mancomunidades reales de la provincia con la
-   afiliación declarada pendiente.
-6. Antes de cualquier publicación pública amplia: revisión legal (RGPD,
-   honor/rectificación, ToS de las plataformas) — ver §22 del blueprint.
-7. **Cabeceras CCAA en cola**: DOGC y BOA resisten el scraping sin navegador
-   (DOGC: Liferay con widgets httpFetch cuya URL de datos solo se ve en el
-   navegador; BOA: Angular cuya ruta de datos dispara al buscar). Playbook
-   conocido: abrir el portal, hacer una búsqueda de fecha y copiar la llamada
-   de datos desde DevTools → Network. Los boletines forales (BOTHA, BOB, BOG)
-   van como filas BOP en el seed — son los boletines de los Territorios
-   Históricos (capacidad legislativa foral), no BOPs municipales.
-8. **Votaciones del Congreso (Leg15)**: el opendata solo publica gráficos PNG
-   por sesión (la página lista únicamente la última, el XML hermano no existe).
-   Volverá cuando el Congreso cambie de formato o tras revertir el portlet.
-9. **Matching por nombre**: 2 municipios con artículo valenciano invertido en
-   el nombre DIR3 ("l'Alcora") crean ficha duplicada — los datos son correctos,
-   el enlace es mejorable.
+1. ~~Índice de competencias mínimo~~ **CERRADO** — 40 competencias estructuradas
+   (cadena, niveles decisorios, artículo, fuente ELI verificada, con un test
+   que obliga a verificar cada fuente antes de sembrar). El índice seguirá
+   creciendo por oleadas, pero ya no es un déficit estructural.
+2. ~~BOPV sin PDFs~~ **CERRADO** — el ban de `www.euskadi.eus` se levantó; el
+   cron cubre el día a día y el backfill mensual trajo el 2026 completo
+   (2.756 actos con PDF y hash, 0 errores).
+3. **`disarm_techniques.fase`** queda NULL — las fuentes actuales de DISARM ya
+   no exponen el agrupado Plan/Prepare/Execute/Assess. Externo al proyecto.
+4. **Panel de sesgo parcialmente abierto** — `/auditoria` ya expone la
+   transparencia estructural del motor (40 competencias, regla-no-modelo, sin
+   ramas por actor), pero los % de veredicto por partido esperan al radar §10
+   (y requieren decidir si se persisten consultas — hoy no se guardan, por
+   privacidad).
+5. **Módulo de vídeo**: implementado, sin ejecutar en producción (GPU/modelos/
+   HF_TOKEN para diarización).
+6. **Mancomunidad→municipio**: DIR3 lista las mancomunidades con provincia pero
+   no su composición; /calle muestra las reales de la provincia con la
+   afiliación declarada pendiente del Censo EELL. Externo.
+7. **Legal antes de publicar** (RGPD, honor/rectificación, ToS) — §22 del
+   blueprint. Pendiente del operador.
+8. **DOGC y BOA**: resisten el scraping sin navegador (Liferay/Angular); su
+   endpoint de datos solo se ve desde DevTools → Network tras una búsqueda de
+   fecha (playbook ya usado con DIR3 y BOPV). Las demás CCAA grandes ya están
+   operativas: BOJA, BOCM, DOE, DOG + BOPV completo.
+9. **Votaciones Congreso (Leg15)**: solo gráficos PNG por sesión. Externo.
+10. **Matching por nombre**: 2 municipios con artículo valenciano invertido en
+    el nombre DIR3 ("l'Alcora") crean ficha duplicada — datos correctos,
+    enlace mejorable (media hora de trabajo).
+11. **Senado**: portal de datos abiertos en 500 y listado de senadores en JS
+    sin enlaces — necesita playbook de navegador como DOGC/BOA.
 
 ## Hoja de ruta
 
