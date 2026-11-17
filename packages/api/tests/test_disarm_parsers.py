@@ -56,11 +56,11 @@ def test_mapa_tactica_fase_cubre_las_16(tmp_path):
 
     db = tmp_path / "DISARM.sqlite"
     conn = sqlite3.connect(db)
-    conn.execute("CREATE TABLE phase (disarm_id TEXT, name TEXT)")
-    conn.execute("CREATE TABLE tactic (disarm_id TEXT, name TEXT, phase_id TEXT)")
+    conn.execute("CREATE TABLE phase (id INTEGER, disarm_id TEXT, name TEXT)")
+    conn.execute("CREATE TABLE tactic (id INTEGER, disarm_id TEXT, phase_id TEXT, name TEXT, rank INTEGER, summary TEXT)")
     for pid, nombre in (("P01", "Plan"), ("P02", "Prepare"), ("P03", "Execute"), ("P04", "Assess")):
-        conn.execute("INSERT INTO phase VALUES (?, ?)", (pid, nombre))
-    conn.execute("INSERT INTO tactic VALUES (1, 'TA06', 'P02', 'Develop Content')")
+        conn.execute("INSERT INTO phase (disarm_id, name) VALUES (?, ?)", (pid, nombre))
+    conn.execute("INSERT INTO tactic (disarm_id, phase_id, name) VALUES ('TA06', 'P02', 'Develop Content')")
     conn.commit()
     conn.close()
 
