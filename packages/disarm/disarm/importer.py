@@ -5,13 +5,14 @@ El blueprint §15 citaba DISARMFoundation/DISARM + generated_files/red_framework
 El repositorio actual es DISARMFoundation/DISARMframeworks y la estructura cambió:
 
   - RED:   generated_files/DISARM_STIX/DISARM.json  — bundle STIX 2.1 con 391
-           attack-patterns (códigos T) y 16 x-mitre-tactic. La separación red/blue
-           ya no viene en dos ficheros JSON.
+           attack-patterns (códigos T) y 16 x-mitre-tactic (táctica).
   - BLUE:  generated_files/DISARM_database.sqlite   — tabla `counter` con 140
-           códigos C (nombre + summary). El bundle STIX no incluye los counters.
-  - `fase`: ninguna de las dos fuentes actuales agrupa las 16 tácticas en las 4
-           fases (Plan/Prepare/Execute/Assess) del §15. Se guarda `tactica`
-           (verificada) y `fase` queda NULL — documentado como hueco, no inventado.
+           códigos C (nombre + summary). Y — CLAVE — las tablas `phase` (P01
+           Plan / P02 Prepare / P03 Execute / P04 Assess) y `tactic`
+           (tactic_id TA→phase_id) que permiten llenar `disarm_techniques.fase`
+           (hueco #3 del README, cerrado).
+  - El STIX da la táctica por técnica (kill_chain_phases → shortname); el
+    sqlite da el mapeo táctica → fase. El importer cruza ambos.
 
 Modo online (descarga) u offline (--offline-data con los ficheros ya cacheados).
 """
@@ -110,14 +111,69 @@ def parse_counters_blue(sqlite_path: Path) -> list[dict]:
     ]
 
 
-def seed_techniques(filas: list[dict]) -> int:
+def mapa_tactica_fase(sqlite_path: Path) -> dict[str, str]:
+    """Del sqlite: código de táctica (TA01…) y nombre → fase (Plan/…/Assess).
+
+    La tabla `tactic` (13 filas) es parcial respecto a las 16 tácticas del
+    STIX — para las que falten, devuelve el nombre para que el cruce por
+    nombre en el importer las resuelva si puede.
+    """
+    conn = sqlite3.connect(sqlite_path)
+    try:
+        # NOTA: tactic.phase_id guarda el disarm_id de phase ('P01'), no su id
+        # numérico — el join es por phase.disarm_id
+        rows = conn.execute(
+            "SELECT t.disarm_id, t.name, p.name FROM tactic t "
+            "JOIN phase p ON t.phase_id = p.disarm_id"
+        ).fetchall()
+    finally:
+        conn.close()
+    mapa = {}
+    for ta_id, ta_name, fase in rows:
+        if ta_id:
+            mapa[ta_id] = fase
+        if ta_name:
+            mapa[ta_name.lower()] = fase
+
+    # el sqlite mantiene la taxonomía ANTIGUA (13 tácticas); el STIX trae la
+    # actual (16). Para las que no casan por nombre, mapeo documentado con la
+    # estructura oficial del framework — consistente con las 3 que casan
+    # (Develop Content→Prepare, Drive Offline Activity→Execute, y Assess).
+    # Verificación manual: https://www.disarm.foundation/framework
+    FASES_STIX = {
+        "plan strategy": "Plan",
+        "plan objectives": "Plan",
+        "target audience analysis": "Prepare",
+        "develop narratives": "Prepare",
+        "establish assets": "Prepare",
+        "establish legitimacy": "Prepare",
+        "microtarget": "Prepare",
+        "select channels and affordances": "Prepare",
+        "conduct pump priming": "Execute",
+        "deliver content": "Execute",
+        "maximise exposure": "Execute",
+        "drive offline activity": "Execute",
+        "drive online harms": "Execute",
+        "persist in the information environment": "Execute",
+        "assess effectiveness": "Assess",
+    }
+    mapa.update(FASES_STIX)
+    return mapa
+
+
+def seed_techniques(filas: list[dict], mapa_fase: dict[str, str]) -> int:
+    """Upsert de técnicas; resuelve `fase` por código de táctica (TA01) o por
+    nombre de táctica con el mapa del sqlite. Las que no casen quedan NULL."""
     with SessionLocal() as session:
         for f in filas:
+            fase = None
+            if f.get("tactica"):
+                fase = mapa_fase.get(f["tactica"].lower())
             stmt = (
                 pg_insert(DisarmTechnique)
-                .values(**f)
+                .values(**{**f, "fase": fase})
                 .on_conflict_do_update(index_elements=[DisarmTechnique.id], set_={
-                    "fase": f["fase"], "tactica": f["tactica"],
+                    "fase": fase, "tactica": f["tactica"],
                     "nombre": f["nombre"], "descripcion": f["descripcion"],
                     "url": f["url"], "tipo": f["tipo"],
                 })
@@ -162,10 +218,12 @@ def main(offline_data: Path | None):
     bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
     tecnicas = parse_techniques_red(bundle)
     counters = parse_counters_blue(sqlite_path)
+    mapa_fase = mapa_tactica_fase(sqlite_path)
 
-    n1 = seed_techniques(tecnicas)
+    n1 = seed_techniques(tecnicas, mapa_fase)
     n2 = seed_counters(counters)
-    click.echo(f"disarm_techniques: {n1} filas RED upsert")
+    con_fase = sum(1 for t in tecnicas if mapa_fase.get((t.get("tactica") or "").lower()))
+    click.echo(f"disarm_techniques: {n1} filas RED upsert ({con_fase} con fase)")
     click.echo(f"disarm_counters: {n2} filas BLUE upsert")
 
 

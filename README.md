@@ -122,8 +122,12 @@ queda reflejado:
 2. ~~BOPV sin PDFs~~ **CERRADO** — el ban de `www.euskadi.eus` se levantó; el
    cron cubre el día a día y el backfill mensual trajo el 2026 completo
    (2.756 actos con PDF y hash, 0 errores).
-3. **`disarm_techniques.fase`** queda NULL — las fuentes actuales de DISARM ya
-   no exponen el agrupado Plan/Prepare/Execute/Assess. Externo al proyecto.
+3. ~~`disarm_techniques.fase`~~ **CERRADO** — el mapeo táctica→fase vive en las
+   tablas `phase`/`tactic` del propio sqlite de DISARM (P01 Plan / P02 Prepare /
+   P03 Execute / P04 Assess), cruzado con la taxonomía actual del STIX bundle
+   (16 tácticas) mediante un mapeo documentado. Las 391 técnicas RED tienen
+   fase (Plan 47 · Prepare 240 · Execute 91 · Assess 13). Aportado por el
+   análisis del Data Knowledge Hub que llevó a re-examinar el sqlite.
 4. **Panel de sesgo parcialmente abierto** — `/auditoria` ya expone la
    transparencia estructural del motor (40 competencias, regla-no-modelo, sin
    ramas por actor), pero los % de veredicto por partido esperan al radar §10

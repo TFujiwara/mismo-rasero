@@ -33,8 +33,43 @@ def test_parse_techniques_red_basico():
     assert f["id"] == "T0132"
     assert f["tipo"] == "RED"
     assert f["tactica"] == "Develop Narratives"
-    assert f["fase"] is None  # sin fuente verificada de fase (documentado)
+    assert f["fase"] is None  # la fase la resuelve seed_techniques con el mapa del sqlite
     assert f["url"].endswith("T0132")
+
+
+FASES_STIX = {
+    "plan strategy": "Plan", "plan objectives": "Plan",
+    "target audience analysis": "Prepare", "develop narratives": "Prepare",
+    "microtarget": "Prepare", "select channels and affordances": "Prepare",
+    "conduct pump priming": "Execute", "deliver content": "Execute",
+    "maximise exposure": "Execute", "drive offline activity": "Execute",
+    "drive online harms": "Execute",
+    "persist in the information environment": "Execute",
+    "assess effectiveness": "Assess",
+}
+
+
+def test_mapa_tactica_fase_cubre_las_16(tmp_path):
+    import sqlite3
+
+    from disarm.importer import mapa_tactica_fase
+
+    db = tmp_path / "DISARM.sqlite"
+    conn = sqlite3.connect(db)
+    conn.execute("CREATE TABLE phase (disarm_id TEXT, name TEXT)")
+    conn.execute("CREATE TABLE tactic (disarm_id TEXT, name TEXT, phase_id TEXT)")
+    for pid, nombre in (("P01", "Plan"), ("P02", "Prepare"), ("P03", "Execute"), ("P04", "Assess")):
+        conn.execute("INSERT INTO phase VALUES (?, ?)", (pid, nombre))
+    conn.execute("INSERT INTO tactic VALUES (1, 'TA06', 'P02', 'Develop Content')")
+    conn.commit()
+    conn.close()
+
+    mapa = mapa_tactica_fase(db)
+    # 16 tácticas del STIX, todas resueltas (13 por el fallback documentado,
+    # la de Develop Content por el join real)
+    for tactica in FASES_STIX:
+        assert mapa.get(tactica) == FASES_STIX[tactica], tactica
+    assert mapa["develop content"] == "Prepare"  # del sqlite real
 
 
 def test_parse_techniques_red_sin_tactica():
